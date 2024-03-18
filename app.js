@@ -22,17 +22,17 @@ console.log("ALAB 308.3.1: Practical Loops");
 // If a number is not divisible by either 3 or 5, log the number.
 // Remember to commit your solution once it is working.
 
-// for (let i = 1; i <= 100; i++) {
-//     if (i % 3 === 0 && i % 5 === 0) {
-//         console.log("Fizz Buzz");
-//     } else if (i % 3 === 0) {
-//         console.log("Fizz");
-//     } else if (i % 5 === 0) {
-//         console.log("Buzz");
-//     } else {
-//         console.log(i);
-//     }
-// }
+for (let i = 1; i <= 100; i++) {
+    if (i % 3 === 0 && i % 5 === 0) {
+        console.log("Fizz Buzz");
+    } else if (i % 3 === 0) {
+        console.log("Fizz");
+    } else if (i % 5 === 0) {
+        console.log("Buzz");
+    } else {
+        console.log(i);
+    }
+}
 
 //////////////////////////////////////////////////
 // ------------ Part 2: Prime Time ------------ //
@@ -46,27 +46,27 @@ console.log("ALAB 308.3.1: Practical Loops");
 // Continuing with the example above, if n is equal to 4, your loop should log 5. Similarly, if n is 5, it should log 7, and if n is 9, it should log 11. Test your loop with higher numbers and reference an online prime number table to determine the accuracy of your code.
 // Be careful! If you set n to a number too large, your loop could take a long time to process.
 
-// function isPrime(num) {
-//     if (num <= 1) return false;
-//     if (num <= 3) return true;
-//     if (num % 2 === 0 || num % 3 === 0) return false;
-//     let i = 5;
-//     while (i * i <= num) {
-//         if (num % i === 0 || num % (i + 2) === 0) return false;
-//         i += 6;
-//     }
-//     return true;
-// }
+function isPrime(num) {
+    if (num <= 1) return false;
+    if (num <= 3) return true;
+    if (num % 2 === 0 || num % 3 === 0) return false;
+    let i = 5;
+    while (i * i <= num) {
+        if (num % i === 0 || num % (i + 2) === 0) return false;
+        i += 6;
+    }
+    return true;
+}
 
 // function findNextPrime(n) {
-//     let nextPrime = n + 1;
-//     while (true) {
-//         if (isPrime(nextPrime)) {
-//             return nextPrime;
-//         }
-//         nextPrime++;
-//     }
-// }
+    let nextPrime = n + 1;
+    while (true) {
+        if (isPrime(nextPrime)) {
+            return nextPrime;
+        }
+        nextPrime++;
+    }
+}
 
 // // Test with different values of n -----> This helped me to figure out the loop. 
 // // console.log(findNextPrime(4)); // Output: 5
@@ -76,61 +76,11 @@ console.log("ALAB 308.3.1: Practical Loops");
 // // console.log(findNextPrime(13)); // Output: 11
 // // console.log(findNextPrime(13)); // Output: 11
 
-// // Find prime numbers up to 1000
-// let prime = 1;
-// while (prime <= 1000) {
-//     prime = findNextPrime(prime);
-//     if (prime <= 1000) {
-//         console.log(prime);
-//     }
-// }
-
-/////////////////////////////////////////////////////
-// ------------ Part 3: Feeling Loopy ------------ //
-////////////////////////////////////////////////////
-
-/****** --- First try -----------------------------------*
-// Sample CSV string
-const csvString = `ID,Name,Occupation,Age\n42,Bruce,Knight,41\n57,Bob,Fry Cook,19\n63,Blaine,Quiz Master,58\n98,Bill,Doctor’s Assistant,26`;
-
-// Function to parse and log CSV data
-function parseCSV(csvString) {
-    let currentCell = ''; // Variable to store current cell data
-    let rowData = []; // Array to store data for each row
-
-    // Loop through characters of CSV string
-    for (let i = 0; i < csvString.length; i++) {
-        const char = csvString[i];
-        
-        // If comma encountered, push currentCell to rowData and reset currentCell
-        if (char === ',') {
-            rowData.push(currentCell.trim());
-            currentCell = '';
-        }
-        // If newline encountered, push currentCell to rowData, log rowData, and reset rowData and currentCell
-        else if (char === '\n') {
-            rowData.push(currentCell.trim());
-            console.log(...rowData);
-            rowData = [];
-            currentCell = '';
-        }
-        // If not a delimiter, append character to currentCell
-        else {
-            currentCell += char;
-        }
+// Find prime numbers up to 1000
+let prime = 1;
+while (prime <= 1000) {
+    prime = findNextPrime(prime);
+    if (prime <= 1000) {
+        console.log(prime);
     }
-}
-
-// Test with sample CSV string
-parseCSV(csvString);*/
-
-
-let CSV = 'ID,Name,Occupation,Age\n42,Bruce,Knight,41\n' +
-    '57,Bob,Fry Cook,19\n63,Blaine,Quiz Master,58\n' +
-    '98,Bill,Doctor’s Assistant,26';
-let data = CSV.split('\n');
-
-for (let i = 0; i < data.length; i++) {
-    let line = data[i];
-    console.log(line);
 }
